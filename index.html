@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <title>Actions</title>
+ <h2 id="title">Actions</h2>
+<style>
+#div1 {
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<p>Drag the image into the rectangle:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="settings.png" draggable="true" ondragstart="drag(event)" width="69" height="69">
+
+<p ondblclick="doubleClickFunction()">Double-click text to trigger a function.</p>
+
+<p id="demo"></p>
+
+<script>
+function doubleClickFunction() {
+    document.getElementById("demo").innerHTML = "You double clicked";
+}
+</script>
+
+<img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" src="close.jpg" alt="Smiley" width="32" height="32">
+
+<p>Mouse hover the image above</p>
+
+<script>
+function bigImg(x) {
+    x.style.height = "64px";
+    x.style.width = "64px";
+}
+
+function normalImg(x) {
+    x.style.height = "32px";
+    x.style.width = "32px";
+}
+</script>
+
+<form >
+<select name="food" multiple>
+  <option value="pizza">Pizza</option>
+  <option value="burger">Burger</option>
+  <option value="pasta">Pasta</option>
+</select>
+</form>
+
+<p>Select two items</p>
+
+<form >
+  <input type="file" name="pic" accept="image/*">
+</form>
+<p>Upload item</p>
+
+<br> </br>
+<br> </br>
+<br> </br>
+<br> </br>
+<br> </br>
+<br> </br>
+<br> </br>
+<button type="button" onclick="alert('you found me!')">Click Me!</button>
+
+
+</body>
+</html>
